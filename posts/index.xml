@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on KainatOS</title>
+    <link>https://kainat-os.github.io/posts/</link>
+    <description>Recent content in Posts on KainatOS</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Jun 2025 00:00:00 +0600</lastBuildDate>
+    <atom:link href="https://kainat-os.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Download</title>
+      <link>https://kainat-os.github.io/posts/download/</link>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 +0600</pubDate>
+      <guid>https://kainat-os.github.io/posts/download/</guid>
+      <description>&lt;h1 id=&#34;download-kainatos&#34;&gt;Download KainatOS&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;KainatOS 25.1&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Thank you for choosing KainatOS. Click the button below to grab the latest ISO. For installation instructions, see our &lt;a href=&#34;https://kainat-os.github.io/posts/how-to-install&#34;&gt;How to install&lt;/a&gt; page.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;stay-connected&#34;&gt;Stay Connected&lt;/h2&gt;&#xA;&lt;p&gt;If you need support or want to stay updated, reach out or follow us:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;✉️ &lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:kainatquaderee@gmail.com&#34;&gt;kainatquaderee@gmail.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;💻 &lt;strong&gt;GitHub:&lt;/strong&gt; &lt;a href=&#34;https://github.com/kainat-os&#34;&gt;github.com/kainat-os&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;▶️ &lt;strong&gt;YouTube:&lt;/strong&gt; &lt;a href=&#34;https://www.youtube.com/@kaidenquinart&#34;&gt;YouTube Channel&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;After downloading, you may want to verify the ISO’s SHA256 checksum. Refer to the &lt;a href=&#34;https://kainat-os.github.io/how-to-install&#34;&gt;How to install&lt;/a&gt; page for detailed instructions on checksum verification.&lt;/li&gt;&#xA;&lt;li&gt;Future versions and release notes will always be available at our GitHub Releases page:&#xA;&lt;a href=&#34;https://github.com/kainat-os/releases&#34;&gt;https://github.com/kainat-os/releases&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>How to install</title>
+      <link>https://kainat-os.github.io/posts/how-to-install/</link>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 +0600</pubDate>
+      <guid>https://kainat-os.github.io/posts/how-to-install/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Prerequisites&lt;/strong&gt;&#xA;Before you begin, make sure you have:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A computer that supports booting from USB (most UEFI/BIOS‐based systems).&lt;/li&gt;&#xA;&lt;li&gt;A USB flash drive (≥ 4 GB) or blank DVD.&lt;/li&gt;&#xA;&lt;li&gt;An existing operating system (Linux, Windows, or macOS) to create the bootable media.&lt;/li&gt;&#xA;&lt;li&gt;A stable internet connection to download the KainatOS ISO.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-download-the-kainatos-iso&#34;&gt;1. Download the KainatOS ISO&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;go to kainat os &lt;a href=&#34;https://kainat-os.github.io&#34;&gt;official website&lt;/a&gt; and download the iso file.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;(Optional but highly recommended) Verify the SHA256 checksum:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Home</title>
+      <link>https://kainat-os.github.io/posts/home/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kainat-os.github.io/posts/home/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;kainat-os&#34;&gt;Kainat OS&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;By Kainat Quaderee&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-reimagine-your-linux-experience&#34;&gt;🚀 &lt;strong&gt;Reimagine Your Linux Experience&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Introducing &lt;strong&gt;KainatOS&lt;/strong&gt; – the future of Linux distributions, built with simplicity, speed, and an unparalleled user experience at its core.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-is-kainatos&#34;&gt;🌟 What is KainatOS?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;br&gt;&#xA;KainatOS is a groundbreaking Linux distribution that combines the power and flexibility of Linux with a beautifully designed, intuitive user interface. We’ve taken the complexity out of the terminal and put you in the driver’s seat with a seamless, graphical experience that’s easy to use—yet powerful enough for advanced users.&lt;br&gt;&#xA;\&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to install | KainatOS</title>
+  
+    <meta name="description" content="The official website of KainatOS – a lightweight, modern Debian-based Linux distro." />
+  
+
+  
+  
+  <link rel="stylesheet" href="/css/styles.min.61a18ddd9a23562f9492d6238e5917ef3fa37e1b9e56aad6e3db9eb26bd73b80.css" integrity="sha256-YaGN3ZojVi&#43;UktYjjlkX7z&#43;jfhueVqrW49uesmvXO4A=">
+
+  
+  <link rel="icon" href="https://kainat-os.github.io/favicon.ico" />
+</head>
+<body>
+  <header>
+  <a href="/" class="site-title">KainatOS</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/how-to-install/">How to install</a>
+    <a href="/download/">Download</a>
+  </nav>
+  <button id="theme-toggle-btn" class="theme-toggle">🌙 Dark</button>
+</header>
+
+  <main class="container">
+
+
+  
+  <article>
+    <h1>How to install</h1>
+    <p><small>Published on Jun 2, 2025</small></p>
+    <div>
+      <p><strong>Prerequisites</strong>
+Before you begin, make sure you have:</p>
+<ul>
+<li>A computer that supports booting from USB (most UEFI/BIOS‐based systems).</li>
+<li>A USB flash drive (≥ 4 GB) or blank DVD.</li>
+<li>An existing operating system (Linux, Windows, or macOS) to create the bootable media.</li>
+<li>A stable internet connection to download the KainatOS ISO.</li>
+</ul>
+<hr>
+<h2 id="1-download-the-kainatos-iso">1. Download the KainatOS ISO</h2>
+<ol>
+<li>
+<p>go to kainat os <a href="https://kainat-os.github.io">official website</a> and download the iso file.</p>
+</li>
+<li>
+<p>(Optional but highly recommended) Verify the SHA256 checksum:</p>
+<ul>
+<li>
+<p>In the same release entry, there should be a file named <code>SHA256SUMS</code> (or similar).</p>
+</li>
+<li>
+<p>Download that checksum file as well.</p>
+</li>
+<li>
+<p>Open a terminal (or Command Prompt/PowerShell on Windows) and run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># On Linux or macOS:</span>
+</span></span><span style="display:flex;"><span>sha256sum KainatOS-&lt;version&gt;-amd64.iso
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># On Windows (PowerShell):</span>
+</span></span><span style="display:flex;"><span>Get-FileHash .<span style="color:#ae81ff">\K</span>ainatOS-&lt;version&gt;-amd64.iso -Algorithm SHA256
+</span></span></code></pre></div></li>
+<li>
+<p>Compare the printed checksum to the one listed in <code>SHA256SUMS</code>. They must match exactly.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-create-a-bootable-usb-or-dvd">2. Create a Bootable USB (or DVD)</h2>
+<p>You can create a bootable USB stick from Linux, Windows, or macOS. Choose the instructions matching your current OS:</p>
+<h3 id="21-on-linux-ubuntu-debian-kainatos-etc">2.1. On Linux (Ubuntu, Debian, KainatOS, etc.)</h3>
+<ol>
+<li>
+<p><strong>Using <code>dd</code></strong> (command‐line)</p>
+<ol>
+<li>
+<p><strong>Identify your USB device</strong></p>
+<ul>
+<li>
+<p>Plug in the USB stick.</p>
+</li>
+<li>
+<p>Run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lsblk
+</span></span></code></pre></div></li>
+<li>
+<p>Find the entry corresponding to your USB (e.g., <code>/dev/sdb</code>). Double‐check size to avoid overwriting your main disk.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Unmount any mounted partitions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo umount /dev/sdX?*
+</span></span></code></pre></div><p>Replace <code>sdX</code> with your actual device (e.g., <code>sdb</code>).</p>
+</li>
+<li>
+<p><strong>Write the ISO</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>~/Downloads/KainatOS-&lt;version&gt;-amd64.iso of<span style="color:#f92672">=</span>/dev/sdX bs<span style="color:#f92672">=</span>4M status<span style="color:#f92672">=</span>progress oflag<span style="color:#f92672">=</span>sync
+</span></span></code></pre></div><ul>
+<li><code>if=</code> should point to where you saved the ISO.</li>
+<li><code>of=</code> is the device (without any partition number).</li>
+<li><code>bs=4M</code> speeds up the write.</li>
+<li><code>status=progress</code> shows progress.</li>
+<li><code>oflag=sync</code> ensures data is written fully.</li>
+</ul>
+</li>
+<li>
+<p><strong>Eject the USB</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo eject /dev/sdX
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p><strong>Using a GUI Tool (e.g., Balena Etcher or GNOME Disks)</strong></p>
+<ul>
+<li>
+<p><strong>Balena Etcher</strong></p>
+<ol>
+<li>Download and install Etcher from <a href="https://www.balena.io/etcher/">balena.io/etcher</a>.</li>
+<li>Launch Etcher.</li>
+<li>Click “Flash from file,” select the downloaded KainatOS ISO.</li>
+<li>Click “Select target,” choose your USB stick.</li>
+<li>Click “Flash!” and wait until completion.</li>
+</ol>
+</li>
+<li>
+<p><strong>GNOME Disks</strong> (Ubuntu/GNOME)</p>
+<ol>
+<li>Open “Disks.”</li>
+<li>Select your USB device in the sidebar.</li>
+<li>Click on the menu (⋮) and choose “Restore Disk Image.”</li>
+<li>Select the KainatOS ISO file and start.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="22-on-windows">2.2. On Windows</h3>
+<ol>
+<li>
+<p><strong>Using Rufus</strong></p>
+<ol>
+<li>Download Rufus from <a href="https://rufus.ie/">rufus.ie</a>.</li>
+<li>Launch Rufus (no installation required).</li>
+<li>Under “Device,” pick your USB stick.</li>
+<li>Under “Boot selection,” click “SELECT” and choose the KainatOS ISO.</li>
+<li>Leave “Partition scheme” as GPT for UEFI (or MBR if your hardware is legacy BIOS).</li>
+<li>Click “START.” If prompted about “ISOHybrid mode,” choose “Write in ISO Image mode.”</li>
+<li>Wait until Rufus finishes, then close.</li>
+</ol>
+</li>
+<li>
+<p><strong>Using balenaEtcher</strong> (same steps as Linux GUI instructions).</p>
+</li>
+</ol>
+<h3 id="23-on-macos">2.3. On macOS</h3>
+<ol>
+<li>
+<p><strong>Using <code>dd</code></strong></p>
+<ol>
+<li>
+<p>Insert the USB stick.</p>
+</li>
+<li>
+<p>Open Terminal.</p>
+</li>
+<li>
+<p>List disks:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>diskutil list
+</span></span></code></pre></div><p>Identify the USB’s disk identifier (e.g., <code>/dev/disk2</code>).</p>
+</li>
+<li>
+<p>Unmount the USB:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo diskutil unmountDisk /dev/diskN
+</span></span></code></pre></div><p>Replace <code>diskN</code> (e.g., <code>disk2</code>).</p>
+</li>
+<li>
+<p>Use <code>dd</code> to write:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>~/Downloads/KainatOS-&lt;version&gt;-amd64.iso of<span style="color:#f92672">=</span>/dev/rdiskN bs<span style="color:#f92672">=</span>4m
+</span></span></code></pre></div><ul>
+<li>Note: Using <code>rdiskN</code> (raw device) is faster.</li>
+<li>Adjust paths as needed.</li>
+</ul>
+</li>
+<li>
+<p>Eject when done:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>diskutil eject /dev/diskN
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p><strong>Using balenaEtcher</strong></p>
+<ul>
+<li>Same as Linux/macOS GUI instructions above.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="3-boot-from-the-usb-stick">3. Boot from the USB Stick</h2>
+<ol>
+<li>
+<p><strong>Insert the USB stick</strong> (or DVD) into the target computer.</p>
+</li>
+<li>
+<p><strong>Reboot</strong> the computer.</p>
+</li>
+<li>
+<p><strong>Enter the Boot Menu</strong></p>
+<ul>
+<li>Typically by pressing <strong>F2</strong>, <strong>F12</strong>, <strong>Esc</strong>, or <strong>Del</strong> immediately after power‐on (the exact key varies by manufacturer).</li>
+</ul>
+</li>
+<li>
+<p><strong>Select the USB (or DVD) drive</strong> from the boot options.</p>
+</li>
+<li>
+<p>Press <strong>Enter</strong> and the system should start the KainatOS live environment.</p>
+</li>
+</ol>
+<hr>
+<h2 id="4-install-kainatos">4. Install KainatOS</h2>
+<p>Once booted into the live environment, you will see the KainatOS desktop (KDE Plasma with our custom theming). Follow these steps:</p>
+<h3 id="41-launch-the-installer">4.1. Launch the Installer</h3>
+<ul>
+<li>
+<p>On the desktop, locate and double‐click the <strong>“Install KainatOS”</strong> icon (this is a Calamares‐based installer with our branding).</p>
+<p><img src="/images/install-1.png" alt="image"></p>
+</li>
+</ul>
+<h3 id="411-if-you-are-in-laptop-or--using-wifi-connect-to-network-then-click-install">4.1.1 if you are in laptop or  using wifi, connect to network then click install</h3>
+<p><img src="/images/install-2.png" alt="image">
+<img src="/images/install-3.png" alt="image"></p>
+<h3 id="42-select-language--keyboard">4.2. Select Language &amp; Keyboard</h3>
+<ol>
+<li>
+<p><strong>Language selection</strong>:</p>
+<ul>
+<li>Choose your preferred language (e.g., English, বাংলা, etc.).</li>
+</ul>
+</li>
+<li>
+<p><strong>Keyboard layout</strong>:</p>
+<ul>
+<li>Keep the default (usually “US”) or select your own (e.g., “Bangla (Bengali)”).</li>
+</ul>
+<p><img src="/images/install-6.png" alt="image"></p>
+</li>
+<li>
+<p>Click <strong>“Next”</strong>.
+<img src="/images/install-4.png" alt="image"></p>
+</li>
+</ol>
+<h3 id="43-confirm-time-zone">4.3. Confirm Time Zone</h3>
+<p><img src="/images/install-5.png" alt="image"></p>
+<ol>
+<li>A world map appears. Click on your region (e.g., Dhaka, Asia/Dhaka).</li>
+<li>Verify that the time zone is correct (Asia/Dhaka).</li>
+<li>Click <strong>“Next”</strong>.</li>
+</ol>
+<h3 id="44-partitioning">4.4. Partitioning</h3>
+<p><img src="/images/install-7.png" alt="image">
+You have two main options:</p>
+<ul>
+<li><strong>Erase disk and install KainatOS</strong> (recommended for a clean install on a dedicated disk).</li>
+<li><strong>Manual partitioning (“Something else”)</strong> (for dual‐boot, custom layout, or advanced users).</li>
+</ul>
+<h4 id="441-erase-entire-disk">4.4.1. Erase Entire Disk</h4>
+<ol>
+<li>Select <strong>“Erase disk”</strong>.</li>
+<li>Click <strong>“Next”</strong>.</li>
+<li>Confirm that you understand all existing data will be lost.</li>
+<li>Klik <strong>“Install Now”</strong> when prompted.</li>
+</ol>
+<p>The installer will automatically:</p>
+<ul>
+<li>Create a GPT partition table (on UEFI systems) or MBR (on legacy BIOS).</li>
+<li>Allocate a small EFI partition (~512 MB) if UEFI.</li>
+<li>Allocate a swap partition (size ≈ RAM size).</li>
+<li>Allocate a root partition (<code>/</code>) with the remaining space, formatted as ext4.</li>
+</ul>
+<h4 id="442-manual-partitioning-something-else">4.4.2. Manual Partitioning (Something Else)</h4>
+<ol>
+<li>
+<p>Select <strong>“Something else”</strong>.</p>
+</li>
+<li>
+<p>Click <strong>“Next”</strong>.</p>
+</li>
+<li>
+<p>In the partition table dialog:</p>
+<ul>
+<li>
+<p><strong>EFI partition</strong>: If you already have an EFI partition (≥ 512 MB, formatted FAT32), select it, click “Change,” set “Use as” to “EFI system partition.”</p>
+</li>
+<li>
+<p><strong>Root (<code>/</code>) partition</strong>:</p>
+<ol>
+<li>Select a free block or existing partition to overwrite.</li>
+<li>Click “Change.”</li>
+<li>Set “Use as” to “ext4 journaling file system.”</li>
+<li>Set “Mount point” to <code>/</code>.</li>
+<li>Allocate at least 20 GB (more if you plan to install many applications or games).</li>
+</ol>
+</li>
+<li>
+<p><strong>Swap area</strong> (optional if you have plenty of RAM, but recommended if ≤ 8 GB RAM):</p>
+<ol>
+<li>Select a free block or create a new partition.</li>
+<li>Click “Change.”</li>
+<li>Set “Use as” to “swap area.”</li>
+<li>Allocate size roughly equal to your RAM (e.g., 8 GB).</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>Verify partitioning layout in the summary.</p>
+</li>
+<li>
+<p>Ensure that the <strong>“Device for bootloader installation”</strong> points to the correct drive (e.g., <code>/dev/sda</code>).</p>
+</li>
+<li>
+<p>Click <strong>“Install Now”</strong>.</p>
+</li>
+<li>
+<p>Confirm changes when prompted.</p>
+</li>
+</ol>
+<h3 id="45-user-setup">4.5. User Setup</h3>
+<p><img src="/images/install-8.png" alt="image"></p>
+<ol>
+<li><strong>Your name</strong>: Enter your full name (e.g., “Kainat Quaderee”).</li>
+<li><strong>Your computer’s name</strong>: Enter a hostname (e.g., <code>kainat-laptop</code>).</li>
+<li><strong>Username</strong>: Pick a short login name (e.g., <code>kainat</code>).</li>
+<li><strong>Password</strong>: Enter a strong password and confirm it.</li>
+<li>Optionally, check <strong>“Log in automatically”</strong> (not recommended for laptops).</li>
+<li>Click <strong>“Next”</strong>.</li>
+</ol>
+<h3 id="46-wait-for-installation-to-finish">4.6. Wait for Installation to Finish</h3>
+<p><img src="/images/install-9.png" alt="image"></p>
+<ul>
+<li>The installer copies files, sets up the system, and installs the bootloader (GRUB) to your disk.</li>
+<li>This may take 10–20 minutes, depending on hardware speed.</li>
+</ul>
+<h3 id="47-reboot-into-your-new-system">4.7. Reboot Into Your New System</h3>
+<ol>
+<li>When the installer completes, click <strong>“Reboot Now.”</strong></li>
+<li>Remove the USB stick (or DVD) when prompted.</li>
+<li>Your computer should boot into KainatOS’s GRUB menu, and then directly into the new system.</li>
+</ol>
+<hr>
+<h2 id="5-post-installation-setup">5. Post-Installation Setup</h2>
+<p>Once you log in for the first time, consider these recommended steps:</p>
+<h3 id="51-update--upgrade">5.1. Update &amp; Upgrade</h3>
+<p>KainatOS is based on a frozen snapshot of Debian Sid (via <code>snapshot.debian.org</code>), but some updates or branding packages may need refreshing. Open a terminal (<code>Konsole</code>) and run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt full-upgrade
+</span></span></code></pre></div><h3 id="53-install-latest-nvidia-drivers-if-applicable">5.3. Install Latest NVIDIA Drivers (If Applicable)</h3>
+<p>If your machine has an NVIDIA GPU and you want the latest proprietary driver:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install nvidia-driver-kainatos
+</span></span></code></pre></div><p>Reboot after installation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo reboot
+</span></span></code></pre></div><h3 id="gui-way">GUI WAY:</h3>
+<p>open discover and search for nvidia-driver-kainatos</p>
+<h3 id="55-verify-kde-optimizations">5.5. Verify KDE Optimizations</h3>
+<ul>
+<li>KainatOS ships with a pre-tuned <code>kwinrc</code> and compositor settings in <code>/etc/xdg/kdeglobals</code> and <code>/etc/xdg/kwinrc</code> to reduce input lag and improve frame pacing.</li>
+<li>You can tweak further via <strong>System Settings → Display and Monitor → Compositor</strong>.</li>
+</ul>
+<hr>
+<h2 id="6-troubleshooting-tips">6. Troubleshooting Tips</h2>
+<ul>
+<li>
+<p><strong>Boot hangs or black screen</strong>:</p>
+<ul>
+<li>Reboot and, at the GRUB menu, press <strong>e</strong> to edit boot options.</li>
+<li>Add <code>nomodeset</code> after <code>quiet splash</code> on the <code>linux</code> line.</li>
+<li>Press <strong>F10</strong> to boot. Once in, install the appropriate GPU driver.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Wi-Fi detected</strong>:</p>
+<ul>
+<li>
+<p>Check if a proprietary firmware package is missing. Run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install firmware-iwlwifi
+</span></span><span style="display:flex;"><span>sudo modprobe -r iwlwifi <span style="color:#f92672">&amp;&amp;</span> sudo modprobe iwlwifi
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Installation fails due to disk layout</strong>:</p>
+<ul>
+<li>Double-check that the target drive is unmounted.</li>
+<li>If using UEFI, ensure an existing EFI partition is formatted as FAT32 and mounted at <code>/boot/efi</code>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="7-optional-creating-your-own-kainatos-iso">7. (Optional) Creating Your Own KainatOS ISO</h2>
+<p>If you wish to remaster or build a new KainatOS ISO—perhaps after applying custom packages or branding—follow these high-level steps (building on the KainatOS build system):</p>
+<ol>
+<li>
+<p><strong>Set up a Debian Sid chroot</strong> (using <code>debootstrap</code> or an existing KainatOS install).</p>
+</li>
+<li>
+<p><strong>Install the <code>live-build</code> package</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install live-build
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Clone the KainatOS live-build configuration</strong> from GitHub:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/kainatos/kainatos-live-config.git
+</span></span><span style="display:flex;"><span>cd kainatos-live-config
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Customize <code>config</code> files</strong> (e.g., package lists, hooks for theming, etc.).</p>
+</li>
+<li>
+<p><strong>Build the ISO</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo lb clean
+</span></span><span style="display:flex;"><span>sudo lb build
+</span></span></code></pre></div></li>
+<li>
+<p>The resulting ISO appears as <code>kainatos-live-amd64.hybrid.iso</code> in the build directory.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The above steps assume familiarity with Debian’s Live-Build system. Detailed documentation can be found at <a href="https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html">Debian Live-Build Manual</a>.</p></blockquote>
+<hr>
+<h2 id="8-summary">8. Summary</h2>
+<p>By following this guide, you will have:</p>
+<ul>
+<li>Downloaded and verified the official KainatOS ISO.</li>
+<li>Created a bootable USB (or DVD) from Linux, Windows, or macOS.</li>
+<li>Installed KainatOS onto your target machine, with options for automatic or manual partitioning.</li>
+<li>Completed post-installation tasks (updates, proprietary drivers, gaming tools).</li>
+<li>Optionally, learned the basics of remastering a new KainatOS ISO.</li>
+</ul>
+<p>Enjoy exploring KainatOS—a Debian Sid snapshot distribution optimized for KDE and gaming!</p>
+
+    </div>
+  </article>
+
+
+  </main>
+  <footer>
+    <div class="container">
+      © 2025 map[] | 
+      <a href="https://kainat-os.github.io/" style="color: var(--link-color);">Home</a> &middot; 
+      <a href="/how-to-install/" style="color: var(--link-color);">How to install</a> &middot; 
+      <a href="/download/" style="color: var(--link-color);">Download</a>
+      <p style="margin-top: 0.5rem;">
+        Email: <a href="mailto:" style="color: var(--link-color);">
+          
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  
+  <script src="/js/theme-toggle.js"></script>
+</body>
+</html>
+
